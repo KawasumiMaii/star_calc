@@ -172,7 +172,7 @@ def get_float_input(prompt: str, default: float = None) -> float:
                 return default
             return float(user_input)
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print("无效输入。请输入一个数字。")
 
 def get_int_input(prompt: str, default: int = None) -> int:
     while True:
@@ -182,7 +182,7 @@ def get_int_input(prompt: str, default: int = None) -> int:
                 return default
             return int(user_input)
         except ValueError:
-            print("Invalid input. Please enter an integer.")
+            print("无效输入。请输入一个整数。")
 
 def get_list_float_input(prompt: str, default_str: str = "0.1") -> List[float]:
     while True:
@@ -196,14 +196,14 @@ def get_list_float_input(prompt: str, default_str: str = "0.1") -> List[float]:
 
             return [float(item.strip()) for item in user_input.split(',')]
         except ValueError:
-            print("Invalid input. Please enter a comma-separated list of numbers (e.g., 0.1,0.05).")
+            print("无效输入。请输入逗号分隔的数字列表 (例如, 0.1,0.05)。")
 
 def run_prydwen_examples():
     """
     根据 Prydwen.gg 文章运行示例伤害计算并断言结果。
     """
     print("\n" + "="*30)
-    print("Running Prydwen.gg Examples") # CLI output, kept in English
+    print("Running Prydwen.gg Examples") 
     print("="*30)
     tolerance = 1.0 # 允许微小的四舍五入差异
 
@@ -218,7 +218,7 @@ def run_prydwen_examples():
 
     # --- 停云示例1：敌人未破韧，非雷属性弱点 ---
     # 预期伤害：312
-    print("\n--- Tingyun Example 1: Enemy not broken, not weak to Lightning ---") # CLI output
+    print("\n--- Tingyun Example 1: Enemy not broken, not weak to Lightning ---") 
     ty_ex1_calculated_dmg = calculate_outgoing_damage(
         skill_multiplier=tingyun_skill_multiplier,
         scaling_attribute_value=tingyun_atk,
@@ -241,16 +241,16 @@ def run_prydwen_examples():
         weaken_percent=0.0,
     )
     ty_ex1_expected_dmg = 312
-    print(f"Calculated Damage: {ty_ex1_calculated_dmg:.2f}") # CLI output
-    print(f"Expected Damage: {ty_ex1_expected_dmg}") # CLI output
+    print(f"Calculated Damage: {ty_ex1_calculated_dmg:.2f}") 
+    print(f"Expected Damage: {ty_ex1_expected_dmg}") 
     if abs(ty_ex1_calculated_dmg - ty_ex1_expected_dmg) < tolerance:
-        print("Test Passed") # CLI output
+        print("Test Passed") 
     else:
-        print(f"Test Failed. Difference: {abs(ty_ex1_calculated_dmg - ty_ex1_expected_dmg):.2f}") # CLI output
+        print(f"Test Failed. Difference: {abs(ty_ex1_calculated_dmg - ty_ex1_expected_dmg):.2f}") 
 
     # --- 停云示例2：敌人已破韧 ---
     # 预期伤害：346
-    print("\n--- Tingyun Example 2: Enemy broken ---") # CLI output
+    print("\n--- Tingyun Example 2: Enemy broken ---") 
     ty_ex2_calculated_dmg = calculate_outgoing_damage(
         skill_multiplier=tingyun_skill_multiplier,
         scaling_attribute_value=tingyun_atk,
@@ -273,16 +273,16 @@ def run_prydwen_examples():
         weaken_percent=0.0,
     )
     ty_ex2_expected_dmg = 346
-    print(f"Calculated Damage: {ty_ex2_calculated_dmg:.2f}") # CLI output
-    print(f"Expected Damage: {ty_ex2_expected_dmg}") # CLI output
+    print(f"Calculated Damage: {ty_ex2_calculated_dmg:.2f}") 
+    print(f"Expected Damage: {ty_ex2_expected_dmg}") 
     if abs(ty_ex2_calculated_dmg - ty_ex2_expected_dmg) < tolerance:
-        print("Test Passed") # CLI output
+        print("Test Passed") 
     else:
-        print(f"Test Failed. Difference: {abs(ty_ex2_calculated_dmg - ty_ex2_expected_dmg):.2f}") # CLI output
+        print(f"Test Failed. Difference: {abs(ty_ex2_calculated_dmg - ty_ex2_expected_dmg):.2f}") 
 
     # --- 停云示例3：敌人雷属性弱点，未破韧 ---
     # 预期伤害：389
-    print("\n--- Tingyun Example 3: Enemy weak to Lightning, not broken ---") # CLI output
+    print("\n--- Tingyun Example 3: Enemy weak to Lightning, not broken ---") 
     ty_ex3_calculated_dmg = calculate_outgoing_damage(
         skill_multiplier=tingyun_skill_multiplier,
         scaling_attribute_value=tingyun_atk,
@@ -305,13 +305,13 @@ def run_prydwen_examples():
         weaken_percent=0.0,
     )
     ty_ex3_expected_dmg = 389
-    print(f"Calculated Damage: {ty_ex3_calculated_dmg:.2f}") # CLI output
-    print(f"Expected Damage: {ty_ex3_expected_dmg}") # CLI output
+    print(f"Calculated Damage: {ty_ex3_calculated_dmg:.2f}") 
+    print(f"Expected Damage: {ty_ex3_expected_dmg}") 
     # Prydwen 的结果是 389.4，所以 math.isclose 在这里更好，或者使用稍高的容差
     if math.isclose(ty_ex3_calculated_dmg, ty_ex3_expected_dmg, abs_tol=tolerance):
-        print("Test Passed") # CLI output
+        print("Test Passed") 
     else:
-        print(f"Test Failed. Difference: {abs(ty_ex3_calculated_dmg - ty_ex3_expected_dmg):.2f}") # CLI output
+        print(f"Test Failed. Difference: {abs(ty_ex3_calculated_dmg - ty_ex3_expected_dmg):.2f}") 
 
 
     # 青雀50级 vs 敌人50级通用参数 (推导出的敌人最终防御 = 700)
@@ -324,7 +324,7 @@ def run_prydwen_examples():
 
     # --- 青雀示例1：敌人未破韧，非量子属性弱点 ---
     # 预期伤害：518
-    print("\n--- Qingque Example 1: Enemy not broken, not weak to Quantum ---") # CLI output
+    print("\n--- Qingque Example 1: Enemy not broken, not weak to Quantum ---") 
     qq_ex1_calculated_dmg = calculate_outgoing_damage(
         skill_multiplier=qingque_skill_multiplier,
         scaling_attribute_value=qingque_atk,
@@ -347,16 +347,16 @@ def run_prydwen_examples():
         weaken_percent=0.0,
     )
     qq_ex1_expected_dmg = 518
-    print(f"Calculated Damage: {qq_ex1_calculated_dmg:.2f}") # CLI output
-    print(f"Expected Damage: {qq_ex1_expected_dmg}") # CLI output
+    print(f"Calculated Damage: {qq_ex1_calculated_dmg:.2f}") 
+    print(f"Expected Damage: {qq_ex1_expected_dmg}") 
     if abs(qq_ex1_calculated_dmg - qq_ex1_expected_dmg) < tolerance:
-        print("Test Passed") # CLI output
+        print("Test Passed") 
     else:
-        print(f"Test Failed. Difference: {abs(qq_ex1_calculated_dmg - qq_ex1_expected_dmg):.2f}") # CLI output
+        print(f"Test Failed. Difference: {abs(qq_ex1_calculated_dmg - qq_ex1_expected_dmg):.2f}") 
 
     # --- 青雀示例2：敌人量子属性弱点，未破韧 ---
     # 预期伤害：648 (Prydwen 结果为 647.8)
-    print("\n--- Qingque Example 2: Enemy weak to Quantum, not broken ---") # CLI output
+    print("\n--- Qingque Example 2: Enemy weak to Quantum, not broken ---") 
     qq_ex2_calculated_dmg = calculate_outgoing_damage(
         skill_multiplier=qingque_skill_multiplier,
         scaling_attribute_value=qingque_atk,
@@ -379,20 +379,20 @@ def run_prydwen_examples():
         weaken_percent=0.0,
     )
     qq_ex2_expected_dmg = 648 # Prydwen 647.8
-    print(f"Calculated Damage: {qq_ex2_calculated_dmg:.2f}") # CLI output
-    print(f"Expected Damage: {qq_ex2_expected_dmg} (Prydwen: 647.8)") # CLI output
+    print(f"Calculated Damage: {qq_ex2_calculated_dmg:.2f}") 
+    print(f"Expected Damage: {qq_ex2_expected_dmg} (Prydwen: 647.8)") 
     if math.isclose(qq_ex2_calculated_dmg, qq_ex2_expected_dmg, abs_tol=tolerance):
-        print("Test Passed") # CLI output
+        print("Test Passed") 
     else:
-        print(f"Test Failed. Difference: {abs(qq_ex2_calculated_dmg - qq_ex2_expected_dmg):.2f}") # CLI output
+        print(f"Test Failed. Difference: {abs(qq_ex2_calculated_dmg - qq_ex2_expected_dmg):.2f}") 
     
     print("\n" + "="*30)
-    print("Prydwen Examples Complete") # CLI output
+    print("Prydwen Examples Complete") 
     print("="*30 + "\n")
 
 
 if __name__ == "__main__":
-    print("Welcome to the Damage Calculator CLI!") # CLI output, kept in English
+    print("欢迎使用伤害计算器命令行界面！") 
     
     scaling_attribute_value = 0.0
 
@@ -408,66 +408,71 @@ if __name__ == "__main__":
         # 然而，当前请求是在CLI之后运行示例。
         # 一个简单的方法是检查是否有任何参数；如果 "test" 是一个参数，则跳过CLI。
         if "test" in sys.argv or "run_examples" in sys.argv:
-             print("Test mode detected, skipping interactive CLI.") # CLI output
+             print("检测到测试模式，跳过交互式命令行界面。") 
              run_cli_interaction = False
     
     if run_cli_interaction:
-        calculate_stat_first_choice = input("Do you want to calculate a character's ATK, HP, or DEF first? (yes/no, default: no): ").strip().lower() # CLI input prompt
-        if calculate_stat_first_choice == 'yes':
+        calculate_stat_first_choice = input("您想先计算角色的攻击力、生命值还是防御力吗？ (是/否, 默认: 否): ").strip().lower()
+        if calculate_stat_first_choice == 'yes' or calculate_stat_first_choice == '是':
             stat_type_choice = ""
-            while stat_type_choice not in ['atk', 'hp', 'def']:
-                stat_type_choice = input("Which stat do you want to calculate? (atk/hp/def): ").strip().lower() # CLI input prompt
-                if stat_type_choice not in ['atk', 'hp', 'def']:
-                    print("Invalid stat type. Please choose 'atk', 'hp', or 'def'.") # CLI output
+            while stat_type_choice not in ['atk', 'hp', 'def', '攻击力', '生命值', '防御力']:
+                stat_type_choice = input("您想计算哪个属性？ (atk/hp/def 或 攻击力/生命值/防御力): ").strip().lower()
+                if stat_type_choice not in ['atk', 'hp', 'def', '攻击力', '生命值', '防御力']:
+                    print("无效的属性类型。请输入 'atk', 'hp', 'def' 或 '攻击力', '生命值', '防御力'。")
+            
+            # Map Chinese input to English for internal use if necessary
+            stat_map = {"攻击力": "atk", "生命值": "hp", "防御力": "def"}
+            stat_type_internal = stat_map.get(stat_type_choice, stat_type_choice)
 
-            char_base_stat = get_float_input(f"Enter Character Base {stat_type_choice.upper()}: ") # CLI input prompt
-            lc_base_stat = get_float_input(f"Enter Light Cone Base {stat_type_choice.upper()}: ") # CLI input prompt
-            stat_percent_bonus = get_float_input(f"Enter Total {stat_type_choice.upper()} Percent Bonus (e.g., 0.48 for 48%): ") # CLI input prompt
-            flat_stat_bonus = get_float_input(f"Enter Total Flat {stat_type_choice.upper()} Bonus: ") # CLI input prompt
 
-            if stat_type_choice == 'atk':
+            char_base_stat = get_float_input(f"请输入角色基础{stat_type_internal.upper()} (例如, 对于攻击力输入 600): ")
+            lc_base_stat = get_float_input(f"请输入光锥基础{stat_type_internal.upper()} (例如, 对于攻击力输入 500): ")
+            stat_percent_bonus = get_float_input(f"请输入总{stat_type_internal.upper()}百分比加成 (例如, 输入 0.48 表示 48%): ")
+            flat_stat_bonus = get_float_input(f"请输入总固定{stat_type_internal.upper()}加成 (例如, 对于攻击力输入 350): ")
+
+            if stat_type_internal == 'atk':
                 scaling_attribute_value = calculate_total_atk(char_base_stat, lc_base_stat, stat_percent_bonus, flat_stat_bonus)
-            elif stat_type_choice == 'hp':
+            elif stat_type_internal == 'hp':
                 scaling_attribute_value = calculate_total_hp(char_base_stat, lc_base_stat, stat_percent_bonus, flat_stat_bonus)
-            elif stat_type_choice == 'def':
+            elif stat_type_internal == 'def':
                 scaling_attribute_value = calculate_total_def(char_base_stat, lc_base_stat, stat_percent_bonus, flat_stat_bonus)
             
-            print(f"Calculated Total {stat_type_choice.upper()}: {scaling_attribute_value:.2f}") # CLI output
-            print("-" * 30) # CLI output
+            print(f"计算出的总{stat_type_internal.upper()}: {scaling_attribute_value:.2f}")
+            print("-" * 30)
 
         # 2. 伤害计算输入
-        print("\nEnter parameters for Outgoing Damage Calculation:") # CLI output
+        print("\n请输入输出伤害计算的参数：")
 
         if scaling_attribute_value == 0.0: # 如果上面没有计算
-            scaling_attribute_value = get_float_input("Enter Scaling Attribute Value (ATK, HP, or DEF): ") # CLI input prompt
+            scaling_attribute_value = get_float_input("请输入角色的攻击力、生命值或防御力数值 (例如, 3000): ")
         
-        skill_multiplier = get_float_input("Enter Skill Multiplier (e.g., 0.6 for 60%): ") # CLI input prompt
-        extra_multiplier = get_float_input("Enter Extra Multiplier (e.g., 0.2 for 20%, default: 0): ", 0.0) # CLI input prompt
-        extra_dmg = get_float_input("Enter Flat Extra Damage (default: 0): ", 0.0) # CLI input prompt
-        elemental_dmg_bonus_percent = get_float_input("Enter Elemental DMG Bonus Percent (e.g., 0.389 for 38.9%): ") # CLI input prompt
-        all_type_dmg_bonus_percent = get_float_input("Enter All-Type DMG Bonus Percent (default: 0): ", 0.0) # CLI input prompt
-        dot_dmg_bonus_percent = get_float_input("Enter DoT DMG Bonus Percent (default: 0): ", 0.0) # CLI input prompt
-        other_dmg_bonus_percent = get_float_input("Enter Other DMG Bonus Percent (e.g., Basic ATK Bonus, default: 0): ", 0.0) # CLI input prompt
+        skill_multiplier = get_float_input("请输入技能倍率 (例如, 输入 0.6 表示 60%): ")
+        extra_multiplier = get_float_input("请输入额外倍率 (例如, 输入 0.2 表示 20%, 默认为 0): ", 0.0)
+        extra_dmg = get_float_input("请输入固定额外伤害 (默认为 0): ", 0.0)
+        elemental_dmg_bonus_percent = get_float_input("请输入元素伤害加成百分比 (例如, 输入 0.389 表示 38.9%): ")
+        all_type_dmg_bonus_percent = get_float_input("请输入全类型伤害加成百分比 (默认为 0): ", 0.0)
+        dot_dmg_bonus_percent = get_float_input("请输入持续伤害(DoT)加成百分比 (默认为 0): ", 0.0)
+        other_dmg_bonus_percent = get_float_input("请输入其他伤害加成百分比 (例如, 普攻伤害加成, 默认为 0): ", 0.0)
         
-        attacker_level = get_int_input("Enter Attacker Level: ") # CLI input prompt
-        enemy_base_def = get_float_input("Enter Enemy Base DEF: ") # CLI input prompt
-        enemy_def_percent_buffs_debuffs = get_float_input("Enter Enemy DEF Percent Buffs/Debuffs (e.g., 0.2 for buff, -0.1 for debuff, default: 0): ", 0.0) # CLI input prompt
-        def_reduction_percent = get_float_input("Enter DEF Reduction Percent (e.g., Pela ult, default: 0): ", 0.0) # CLI input prompt
-        def_ignore_percent = get_float_input("Enter DEF Ignore Percent (e.g., Seele E2, default: 0): ", 0.0) # CLI input prompt
+        attacker_level = get_int_input("请输入攻击者等级 (例如, 80): ")
+        enemy_base_def = get_float_input("请输入敌人基础防御 (例如, 1000): ")
+        enemy_def_percent_buffs_debuffs = get_float_input("请输入敌人防御百分比增益/减益 (例如, 输入 0.2 表示增益, -0.1 表示减益, 默认为 0): ", 0.0)
+        def_reduction_percent = get_float_input("请输入防御降低百分比 (例如, 佩拉大招, 输入 0.15 表示 15%, 默认为 0): ", 0.0)
+        def_ignore_percent = get_float_input("请输入防御忽略百分比 (例如, 希儿E2, 输入 0.2 表示 20%, 默认为 0): ", 0.0)
         
-        enemy_current_res_percent = get_float_input("Enter Enemy Current RES Percent (e.g., 0.2 for neutral, 0 for weakness, 0.4 for resistance): ") # CLI input prompt
-        res_pen_percent = get_float_input("Enter RES Penetration Percent (default: 0): ", 0.0) # CLI input prompt
+        enemy_current_res_percent = get_float_input("请输入敌人当前抗性百分比 (例如, 一般情况输入 0.2, 弱点输入 0, 抗性输入 0.4): ")
+        res_pen_percent = get_float_input("请输入抗性穿透百分比 (默认为 0): ", 0.0)
         
-        elemental_dmg_taken_bonus_percent = get_float_input("Enter Elemental DMG Taken Bonus Percent (e.g., Welt ult, default: 0): ", 0.0) # CLI input prompt
-        all_type_dmg_taken_bonus_percent = get_float_input("Enter All-Type DMG Taken Bonus Percent (default: 0): ", 0.0) # CLI input prompt
+        elemental_dmg_taken_bonus_percent = get_float_input("请输入元素伤害承伤加成百分比 (例如, 瓦尔特大招, 默认为 0): ", 0.0)
+        all_type_dmg_taken_bonus_percent = get_float_input("请输入全类型伤害承伤加成百分比 (默认为 0): ", 0.0)
         
         universal_dmg_reduction_sources_str = "0.1" # 敌人韧性的默认值
         universal_dmg_reduction_sources = get_list_float_input(
-            f"Enter Universal DMG Reduction Sources (comma-separated floats, e.g., '0.1,0.05', default: '{universal_dmg_reduction_sources_str}' for enemy toughness): ", # CLI input prompt
+            f"请输入通用伤害减免来源 (逗号分隔的浮点数, 例如 '0.1,0.05', 默认为 '{universal_dmg_reduction_sources_str}' 代表敌人韧性): ",
             default_str=universal_dmg_reduction_sources_str
         )
 
-        weaken_percent = get_float_input("Enter Weaken Percent (e.g., 0.15 for 15%, default: 0): ", 0.0) # CLI input prompt
+        weaken_percent = get_float_input("请输入虚弱百分比 (例如, 输入 0.15 表示 15%, 默认为 0): ", 0.0)
 
         # 3. 执行计算并显示输出
         final_damage = calculate_outgoing_damage(
@@ -492,10 +497,10 @@ if __name__ == "__main__":
             weaken_percent=weaken_percent,
         )
 
-        print("-" * 30) # CLI output
-        print(f"Calculated Outgoing Damage: {final_damage:.2f}") # CLI output
-        print("-" * 30) # CLI output
-        print("Thank you for using the Damage Calculator!") # CLI output
+        print("-" * 30)
+        print(f"计算出的最终输出伤害: {final_damage:.2f}")
+        print("-" * 30)
+        print("感谢您使用伤害计算器！")
     
     # 总是在CLI交互（如有）后运行Prydwen示例
     run_prydwen_examples()
